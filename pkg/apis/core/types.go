@@ -1862,6 +1862,9 @@ type Probe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
 	// +optional
 	FailureThreshold int32
+	// tty for exec command
+	// +optional
+	Tty bool
 }
 
 // PullPolicy describes a policy for if/when to pull a container image

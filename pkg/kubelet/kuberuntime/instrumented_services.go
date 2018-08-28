@@ -140,11 +140,11 @@ func (in instrumentedRuntimeService) UpdateContainerResources(containerID string
 	return err
 }
 
-func (in instrumentedRuntimeService) ExecSync(containerID string, cmd []string, timeout time.Duration) ([]byte, []byte, error) {
+func (in instrumentedRuntimeService) ExecSync(containerID string, cmd []string, timeout time.Duration, tty bool) ([]byte, []byte, error) {
 	const operation = "exec_sync"
 	defer recordOperation(operation, time.Now())
 
-	stdout, stderr, err := in.service.ExecSync(containerID, cmd, timeout)
+	stdout, stderr, err := in.service.ExecSync(containerID, cmd, timeout, tty)
 	recordError(operation, err)
 	return stdout, stderr, err
 }

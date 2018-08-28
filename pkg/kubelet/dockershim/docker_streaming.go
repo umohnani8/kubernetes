@@ -76,14 +76,14 @@ func (r *streamingRuntime) PortForward(podSandboxID string, port int32, stream i
 
 // ExecSync executes a command in the container, and returns the stdout output.
 // If command exits with a non-zero exit code, an error is returned.
-func (ds *dockerService) ExecSync(containerID string, cmd []string, timeout time.Duration) (stdout []byte, stderr []byte, err error) {
+func (ds *dockerService) ExecSync(containerID string, cmd []string, timeout time.Duration, tty bool) (stdout []byte, stderr []byte, err error) {
 	var stdoutBuffer, stderrBuffer bytes.Buffer
 	err = ds.streamingRuntime.exec(containerID, cmd,
 		nil, // in
 		ioutils.WriteCloserWrapper(&stdoutBuffer),
 		ioutils.WriteCloserWrapper(&stderrBuffer),
-		false, // tty
-		nil,   // resize
+		tty, // tty
+		nil,     // resize
 		timeout)
 	return stdoutBuffer.Bytes(), stderrBuffer.Bytes(), err
 }

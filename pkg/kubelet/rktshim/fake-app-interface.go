@@ -209,7 +209,7 @@ func (r *FakeRuntime) UpdateContainerResources(string, *runtimeapi.LinuxContaine
 	return nil
 }
 
-func (r *FakeRuntime) ExecSync(containerID string, cmd []string, timeout time.Duration) (stdout []byte, stderr []byte, err error) {
+func (r *FakeRuntime) ExecSync(containerID string, cmd []string, timeout time.Duration, tty bool) (stdout []byte, stderr []byte, err error) {
 	c, ok := r.Containers[containerID]
 	if !ok {
 		return nil, nil, ErrContainerNotFound

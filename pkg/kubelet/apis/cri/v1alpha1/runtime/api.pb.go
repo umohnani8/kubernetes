@@ -2350,6 +2350,8 @@ type ExecSyncRequest struct {
 	Cmd []string `protobuf:"bytes,2,rep,name=cmd" json:"cmd,omitempty"`
 	// Timeout in seconds to stop the command. Default: 0 (run forever).
 	Timeout int64 `protobuf:"varint,3,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	// Tty for exec request
+	Tty bool `protobuf:"varint,4,opt,name=tty,proto3" json:"tty,omitempty"`
 }
 
 func (m *ExecSyncRequest) Reset()                    { *m = ExecSyncRequest{} }

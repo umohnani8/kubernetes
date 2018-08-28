@@ -1621,7 +1621,7 @@ func (kl *Kubelet) RunInContainer(podFullName string, podUID types.UID, containe
 		return nil, fmt.Errorf("container not found (%q)", containerName)
 	}
 	// TODO(tallclair): Pass a proper timeout value.
-	return kl.runner.RunInContainer(container.ID, cmd, 0)
+	return kl.runner.RunInContainer(container.ID, cmd, 0, false)
 }
 
 // ExecInContainer executes a command in a container, connecting the supplied

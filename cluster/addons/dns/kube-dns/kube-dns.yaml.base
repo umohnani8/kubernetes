@@ -151,7 +151,7 @@ spec:
         - name: kube-dns-config
           mountPath: /kube-dns-config
         securityContext:
-          allowPrivilegeEscalation: false
+          allowPrivilegeEscalation: true
           readOnlyRootFilesystem: true
           runAsUser: 1001
           runAsGroup: 1001
